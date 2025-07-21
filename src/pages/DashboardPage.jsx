@@ -28,13 +28,6 @@ const DashboardPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Redirect jika tidak ada data
-  useEffect(() => {
-    if (!analysisData || !analysisResult) {
-      navigate('/analisis');
-    }
-  }, [analysisData, analysisResult, navigate]);
-
   if (!analysisData || !analysisResult || !analysisResult.tingkatStres || !analysisResult.emosiUtama) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 pt-20 pb-16 flex items-center justify-center text-center">
@@ -458,7 +451,7 @@ const DashboardPage = () => {
             <Card className="bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20 border-pink-200 dark:border-pink-800">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <MessageHeart className="w-5 h-5 text-pink-600" />
+                  <MessageSquareText className="w-5 h-5 text-pink-600" />
                   <span className="text-pink-800 dark:text-pink-200">Kata Motivasi</span>
                 </CardTitle>
                 <CardDescription className="text-pink-700 dark:text-pink-300">
@@ -510,4 +503,6 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+
+
 
