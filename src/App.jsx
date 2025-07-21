@@ -7,6 +7,7 @@ import AnalisisPage from './pages/AnalisisPage';
 import DashboardPage from './pages/DashboardPage';
 import TentangPage from './pages/TentangPage';
 import Footer from './components/Footer';
+import { AnalysisProvider } from './context/AnalysisContext';
 import './App.css';
 
 function App() {
@@ -51,4 +52,5 @@ function App() {
 }
 
 export default App;
+
 
