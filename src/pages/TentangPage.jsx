@@ -28,29 +28,42 @@ const TentangPage = () => {
 
   const team = [
     {
-      name: "Dr. Sarah Wijaya",
-      role: "Chief Medical Officer",
+      name: "A thoriq Alqi Ighafur",
+      role: "Developer",
       description: "Psikiater dengan 15+ tahun pengalaman dalam terapi kognitif dan kesehatan mental digital.",
       image: "/api/placeholder/300/300"
     },
     {
-      name: "Ahmad Santoso",
+      name: "Kilala Mahadewi",
       role: "AI Technology Lead",
       description: "Ahli AI dan machine learning yang berfokus pada pengembangan teknologi empati buatan.",
       image: "/api/placeholder/300/300"
     },
     {
-      name: "Lisa Pratiwi",
+      name: "Naimatul husna",
       role: "Community Manager",
       description: "Psikolog klinis yang memimpin pengembangan program komunitas dan dukungan peer.",
       image: "/api/placeholder/300/300"
     },
     {
-      name: "Budi Hartono",
+      name: "Fahri",
+      role: "Product Designer",
+      description: "UX designer yang mengkhususkan diri dalam desain aplikasi kesehatan mental yang accessible.",
+      image: "/api/placeholder/300/300"
+    },
+    {
+      name: "Dewi Rahmawati",
+      role: "Comunity Manager",
+      description: "Psikolog klinis yang memimpin pengembangan program komunitas dan dukungan peer.",
+      image: "/api/placeholder/300/300"
+    },
+     {
+      name: "Yusuf Faridz Maulana",
       role: "Product Designer",
       description: "UX designer yang mengkhususkan diri dalam desain aplikasi kesehatan mental yang accessible.",
       image: "/api/placeholder/300/300"
     }
+    
   ];
 
   const stats = [
@@ -256,49 +269,7 @@ const TentangPage = () => {
           </div>
         </motion.div>
 
-        {/* Recognition Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mb-20"
-        >
-          <div className="bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900/20 dark:to-blue-900/20 rounded-3xl p-8 md:p-12">
-            <div className="text-center mb-8">
-              <Award className="w-12 h-12 mx-auto text-green-600 dark:text-green-400 mb-4" />
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                Penghargaan & Sertifikasi
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-2">
-                  ISO 27001
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Sertifikasi keamanan informasi internasional
-                </p>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                  HIPAA Compliant
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Standar privasi data kesehatan
-                </p>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-                  Best AI Innovation
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Penghargaan inovasi AI terbaik 2024
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+       
 
         {/* Contact Section */}
         <motion.div
@@ -317,15 +288,15 @@ const TentangPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="flex items-center justify-center space-x-3">
               <Mail className="w-5 h-5" />
-              <span>hello@mindrelief.id</span>
+              <span>mindrelief@gmail.com</span>
             </div>
             <div className="flex items-center justify-center space-x-3">
               <Phone className="w-5 h-5" />
-              <span>+62 21 1234 5678</span>
+              <span>+62 878 8734 3959</span>
             </div>
             <div className="flex items-center justify-center space-x-3">
               <MapPin className="w-5 h-5" />
-              <span>Jakarta, Indonesia</span>
+              <span>Semarang, Indonesia</span>
             </div>
           </div>
           

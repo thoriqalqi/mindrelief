@@ -61,15 +61,15 @@ const Footer = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-gray-300">
                   <Mail className="w-4 h-4 text-blue-400" />
-                  <span className="text-sm">support@mindrelief.com</span>
+                  <span className="text-sm">mindrelief@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-300">
                   <Phone className="w-4 h-4 text-blue-400" />
-                  <span className="text-sm">+62 812-3456-7890</span>
+                  <span className="text-sm">+62 878-8734-3959</span>
                 </div>
                 <div className="flex items-center space-x-3 text-gray-300">
                   <MapPin className="w-4 h-4 text-blue-400" />
-                  <span className="text-sm">Jakarta, Indonesia</span>
+                  <span className="text-sm">semarang, Indonesia</span>
                 </div>
               </div>
             </motion.div>
@@ -214,11 +214,6 @@ const Footer = () => {
                   Jika Anda mengalami krisis mental atau memiliki pikiran untuk menyakiti diri sendiri, 
                   segera hubungi layanan darurat atau profesional kesehatan mental terdekat.
                 </p>
-                <div className="mt-3 flex flex-wrap gap-4 text-xs text-gray-400">
-                  <span>🏥 Hotline Kesehatan Mental: 119 ext. 8</span>
-                  <span>📞 Crisis Center: 021-500-454</span>
-                  <span>💬 WhatsApp Konseling: 0811-9-8787-8787</span>
-                </div>
               </div>
             </div>
           </div>
