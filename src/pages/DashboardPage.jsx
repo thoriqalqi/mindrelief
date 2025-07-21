@@ -7,7 +7,7 @@ import {
 } from 'recharts';
 import { 
   Brain, TrendingUp, Heart, AlertCircle, CheckCircle, 
-  ArrowLeft, Download, Share2, Target, Lightbulb, MessageSquareText
+  ArrowLeft, Download, Share2, Target, Lightbulb, MessageSquareText, Loader2
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -18,8 +18,98 @@ const DashboardPage = () => {
   const navigate = useNavigate();
   const { analysisData, analysisResult, isLoading } = useAnalysis();
 
+  // Loading state dengan animasi dinamis
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 pt-20 pb-16 flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-md mx-auto p-8"
+        >
+          {/* Animated Loading Spinner */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            className="w-20 h-20 border-4 border-blue-200 border-t-blue-600 rounded-full mx-auto mb-6"
+          />
+          
+          {/* Pulsing Brain Icon */}
+          <motion.div
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="mb-6"
+          >
+            <Brain className="w-16 h-16 text-blue-600 mx-auto" />
+          </motion.div>
 
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-3xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            🧠 Menganalisis Data Mental Anda
+          </motion.h2>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="space-y-3"
+          >
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              AI Gemini sedang memproses data Anda...
+            </p>
+            
+            {/* Loading Steps Animation */}
+            <div className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+              <motion.div
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="flex items-center justify-center space-x-2"
+              >
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Menganalisis tingkat stres...</span>
+              </motion.div>
+              
+              <motion.div
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                className="flex items-center justify-center space-x-2"
+              >
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Mengevaluasi distribusi emosi...</span>
+              </motion.div>
+              
+              <motion.div
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+                className="flex items-center justify-center space-x-2"
+              >
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Menyiapkan rekomendasi personal...</span>
+              </motion.div>
+            </div>
+          </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg"
+          >
+            <p className="text-sm text-blue-700 dark:text-blue-300">
+              ⏱️ Proses analisis biasanya memakan waktu 10-30 detik
+            </p>
+          </motion.div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // Jika belum ada data analisis
   if (!analysisData || !analysisResult || !analysisResult.tingkatStres || !analysisResult.emosiUtama) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 pt-20 pb-16 flex items-center justify-center text-center">
@@ -86,27 +176,6 @@ const DashboardPage = () => {
   }
 
   const stressLevel = getStressLevel(analysisResult.tingkatStres);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 pt-20 pb-16 flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-            Memproses Analisis...
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300">
-            Sedang menyiapkan dashboard hasil analisis Anda
-          </p>
-        </motion.div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 pt-20 pb-16">
@@ -495,6 +564,4 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
-
-
 

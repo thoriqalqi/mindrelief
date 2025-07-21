@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Heart, Menu, X, Sun, Moon, Brain, BarChart3, MessageCircle, Users } from 'lucide-react';
+import { Heart, Menu, X, Sun, Moon, Brain, BarChart3, MessageCircle, Users, Home } from 'lucide-react';
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
-    { name: 'Home', path: '/', icon: Heart },
+    { name: 'Home', path: '/', icon: Home },
     { name: 'Analisis Mental', path: '/analisis', icon: Brain },
     { name: 'Dashboard', path: '/dashboard', icon: BarChart3 },
     { name: 'Curhat AI', path: '/curhat', icon: MessageCircle },

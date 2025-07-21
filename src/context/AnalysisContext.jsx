@@ -46,4 +46,3 @@ export const AnalysisProvider = ({ children }) => {
 };
 
 export default AnalysisContext;
-
