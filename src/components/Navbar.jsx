@@ -8,9 +8,10 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   const location = useLocation();
 
   const navItems = [
-    { name: 'Curhat AI', path: '/curhat', icon: MessageCircle },
+    { name: 'Home', path: '/', icon: Heart },
     { name: 'Analisis Mental', path: '/analisis', icon: Brain },
     { name: 'Dashboard', path: '/dashboard', icon: BarChart3 },
+    { name: 'Curhat AI', path: '/curhat', icon: MessageCircle },
     { name: 'Tentang Kami', path: '/tentang', icon: Users },
   ];
 

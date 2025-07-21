@@ -6,7 +6,7 @@ import CurhatPage from './pages/CurhatPage';
 import AnalisisPage from './pages/AnalisisPage';
 import DashboardPage from './pages/DashboardPage';
 import TentangPage from './pages/TentangPage';
-import { AnalysisProvider } from './context/AnalysisContext';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -43,6 +43,7 @@ function App() {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/tentang" element={<TentangPage />} />
           </Routes>
+          <Footer />
         </div>
       </Router>
     </AnalysisProvider>

@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, LineChart, Line, Area, AreaChart
+  PieChart, Pie, Cell
 } from 'recharts';
 import { 
   Brain, TrendingUp, Heart, AlertCircle, CheckCircle, 
-  ArrowLeft, Download, Share2, RefreshCw, Target
+  ArrowLeft, Download, Share2, Target, Lightbulb, MessageHeart
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -39,29 +39,26 @@ const DashboardPage = () => {
     return null;
   }
 
-  // Data untuk grafik tingkat stres
+  // Data untuk grafik tingkat stres (menggunakan data dari AI)
   const stressData = [
-    { name: 'Tingkat Stres', value: analysisResult.tingkatStres, color: '#ef4444' },
-    { name: 'Kesehatan Mental', value: 100 - analysisResult.tingkatStres, color: '#22c55e' }
+    { 
+      name: 'Tingkat Stres', 
+      value: analysisResult.tingkatStres, 
+      color: analysisResult.tingkatStres > 70 ? '#ef4444' : analysisResult.tingkatStres > 40 ? '#f59e0b' : '#22c55e'
+    },
+    { 
+      name: 'Kesehatan Mental', 
+      value: 100 - analysisResult.tingkatStres, 
+      color: analysisResult.tingkatStres > 70 ? '#22c55e' : analysisResult.tingkatStres > 40 ? '#3b82f6' : '#10b981'
+    }
   ];
 
-  // Data untuk pie chart emosi
+  // Data untuk pie chart emosi (langsung dari AI response)
   const emotionData = Object.entries(analysisResult.emosiUtama).map(([emotion, value]) => ({
     name: emotion.charAt(0).toUpperCase() + emotion.slice(1),
     value: value,
     color: getEmotionColor(emotion)
   }));
-
-  // Data untuk area chart (simulasi progress mingguan)
-  const weeklyProgress = [
-    { day: 'Sen', stress: analysisResult.tingkatStres + 10, mood: 60 },
-    { day: 'Sel', stress: analysisResult.tingkatStres + 5, mood: 65 },
-    { day: 'Rab', stress: analysisResult.tingkatStres, mood: 70 },
-    { day: 'Kam', stress: analysisResult.tingkatStres - 5, mood: 75 },
-    { day: 'Jum', stress: analysisResult.tingkatStres - 10, mood: 80 },
-    { day: 'Sab', stress: analysisResult.tingkatStres - 15, mood: 85 },
-    { day: 'Min', stress: analysisResult.tingkatStres - 20, mood: 90 }
-  ];
 
   function getEmotionColor(emotion) {
     const colors = {
@@ -317,61 +314,13 @@ const DashboardPage = () => {
           </motion.div>
         </div>
 
-        {/* Weekly Progress Chart */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-8"
-        >
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <RefreshCw className="w-5 h-5 text-blue-500" />
-                <span>Proyeksi Progress Mingguan</span>
-              </CardTitle>
-              <CardDescription>
-                Estimasi perkembangan kondisi mental dalam seminggu ke depan
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={300}>
-                <AreaChart data={weeklyProgress}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="day" />
-                  <YAxis />
-                  <Tooltip />
-                  <Area 
-                    type="monotone" 
-                    dataKey="stress" 
-                    stackId="1" 
-                    stroke="#ef4444" 
-                    fill="#ef4444" 
-                    fillOpacity={0.6}
-                    name="Tingkat Stres"
-                  />
-                  <Area 
-                    type="monotone" 
-                    dataKey="mood" 
-                    stackId="2" 
-                    stroke="#22c55e" 
-                    fill="#22c55e" 
-                    fillOpacity={0.6}
-                    name="Mood Positif"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-        </motion.div>
-
         {/* Analysis Results */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Ringkasan */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
             <Card>
               <CardHeader>
@@ -418,7 +367,7 @@ const DashboardPage = () => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
             <Card>
               <CardHeader>
@@ -449,12 +398,67 @@ const DashboardPage = () => {
           </motion.div>
         </div>
 
+        {/* Saran & Motivasi dari AI */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Saran Praktis */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <Card className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-yellow-200 dark:border-yellow-800">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Lightbulb className="w-5 h-5 text-yellow-600" />
+                  <span className="text-yellow-800 dark:text-yellow-200">Saran Praktis</span>
+                </CardTitle>
+                <CardDescription className="text-yellow-700 dark:text-yellow-300">
+                  Tips yang bisa diterapkan dalam kehidupan sehari-hari
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="p-4 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg">
+                  <p className="text-yellow-800 dark:text-yellow-200 leading-relaxed">
+                    {analysisResult.saran}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Motivasi */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            <Card className="bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20 border-pink-200 dark:border-pink-800">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <MessageHeart className="w-5 h-5 text-pink-600" />
+                  <span className="text-pink-800 dark:text-pink-200">Kata Motivasi</span>
+                </CardTitle>
+                <CardDescription className="text-pink-700 dark:text-pink-300">
+                  Dukungan dan semangat untuk perjalanan Anda
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="p-4 bg-pink-100 dark:bg-pink-900/30 rounded-lg">
+                  <p className="text-pink-800 dark:text-pink-200 leading-relaxed font-medium">
+                    {analysisResult.motivasi}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+
         {/* Action Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="mt-12 text-center space-y-4"
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="text-center space-y-4"
         >
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

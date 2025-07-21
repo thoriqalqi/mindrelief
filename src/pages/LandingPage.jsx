@@ -109,6 +109,16 @@ const LandingPage = () => {
             animate="visible"
             className="mb-20"
           >
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                ✨ Fitur Unggulan MindRelief
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Platform komprehensif yang menggabungkan teknologi AI terdepan dengan pendekatan psikologi modern 
+                untuk memberikan dukungan kesehatan mental yang personal dan efektif.
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <motion.div
                 variants={itemVariants}
@@ -120,9 +130,15 @@ const LandingPage = () => {
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   💬 AI Curhat
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Berbagi perasaan dengan AI yang empati dan mendukung. Dapatkan respon yang menenangkan dan membantu.
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                  Berbagi perasaan dengan AI yang empati dan mendukung. Dapatkan respon yang menenangkan dan membantu 
+                  kapan saja Anda membutuhkannya.
                 </p>
+                <ul className="text-sm text-gray-500 dark:text-gray-400 space-y-1">
+                  <li>• Respon empati 24/7</li>
+                  <li>• Privasi terjamin</li>
+                  <li>• Dukungan emosional instant</li>
+                </ul>
               </motion.div>
 
               <motion.div
@@ -135,9 +151,15 @@ const LandingPage = () => {
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   🧠 Analisis Mental AI
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Formulir komprehensif untuk menganalisis kondisi mental Anda dengan bantuan AI Gemini yang canggih.
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                  Formulir komprehensif untuk menganalisis kondisi mental Anda dengan bantuan AI Gemini yang canggih. 
+                  Dapatkan insight mendalam tentang kesehatan mental Anda.
                 </p>
+                <ul className="text-sm text-gray-500 dark:text-gray-400 space-y-1">
+                  <li>• Analisis mendalam dengan AI Gemini</li>
+                  <li>• 9 parameter kesehatan mental</li>
+                  <li>• Rekomendasi personal</li>
+                </ul>
               </motion.div>
 
               <motion.div
@@ -150,10 +172,66 @@ const LandingPage = () => {
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   📊 Dashboard Interaktif
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Visualisasi hasil analisis dalam bentuk grafik dan chart yang mudah dipahami dan actionable.
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                  Visualisasi hasil analisis dalam bentuk grafik dan chart yang mudah dipahami. 
+                  Termasuk saran praktis dan motivasi personal dari AI.
                 </p>
+                <ul className="text-sm text-gray-500 dark:text-gray-400 space-y-1">
+                  <li>• Grafik tingkat stres real-time</li>
+                  <li>• Distribusi emosi interaktif</li>
+                  <li>• Saran & motivasi personal</li>
+                </ul>
               </motion.div>
+            </div>
+
+            {/* How It Works Section */}
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-3xl p-8 md:p-12">
+              <div className="text-center mb-10">
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                  🚀 Cara Kerja MindRelief
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                  Proses sederhana dalam 3 langkah untuk mendapatkan dukungan kesehatan mental yang Anda butuhkan
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                    1
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    Isi Formulir Analisis
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Lengkapi 9 parameter kesehatan mental dalam formulir yang mudah dan aman
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                    2
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    AI Menganalisis Data
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Gemini AI memproses data Anda dengan algoritma psikologi terdepan
+                  </p>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                    3
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                    Dapatkan Insight & Saran
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Terima dashboard interaktif dengan saran praktis dan motivasi personal
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
