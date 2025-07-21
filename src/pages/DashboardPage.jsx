@@ -16,17 +16,9 @@ import { useAnalysis } from '@/context/AnalysisContext';
 
 const DashboardPage = () => {
   const navigate = useNavigate();
-  const { analysisData, analysisResult } = useAnalysis();
-  const [isLoading, setIsLoading] = useState(true);
+  const { analysisData, analysisResult, isLoading } = useAnalysis();
 
-  useEffect(() => {
-    // Simulasi loading
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
 
-    return () => clearTimeout(timer);
-  }, []);
 
   if (!analysisData || !analysisResult || !analysisResult.tingkatStres || !analysisResult.emosiUtama) {
     return (

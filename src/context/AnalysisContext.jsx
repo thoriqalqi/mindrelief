@@ -13,6 +13,7 @@ export const useAnalysis = () => {
 export const AnalysisProvider = ({ children }) => {
   const [analysisData, setAnalysisData] = useState(null);
   const [analysisResult, setAnalysisResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const saveAnalysisData = (data) => {
     setAnalysisData(data);
@@ -30,8 +31,10 @@ export const AnalysisProvider = ({ children }) => {
   const value = {
     analysisData,
     analysisResult,
+    isLoading,
     saveAnalysisData,
     saveAnalysisResult,
+    setIsLoading,
     clearAnalysisData
   };
 

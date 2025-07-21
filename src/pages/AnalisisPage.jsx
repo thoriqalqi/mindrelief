@@ -17,8 +17,7 @@ import { useAnalysis } from '@/context/AnalysisContext';
 
 const AnalisisPage = () => {
   const navigate = useNavigate();
-  const { saveAnalysisData, saveAnalysisResult } = useAnalysis();
-  const [isLoading, setIsLoading] = useState(false);
+  const { saveAnalysisData, saveAnalysisResult, setIsLoading } = useAnalysis();
   const [formData, setFormData] = useState({
     namaLengkap: '',
     umur: '',
@@ -123,21 +122,7 @@ const AnalisisPage = () => {
       }
     } catch (error) {
       console.error("Error calling Gemini API or processing response:", error);
-      // Fallback response for any error during API call or processing
-      return {
-        tingkatStres: 65,
-        emosiUtama: {
-          bahagia: 20,
-          netral: 30,
-          tertekan: 25,
-          sedih: 15,
-          marah: 10
-        },
-        rekomendasi: "Berdasarkan analisis, disarankan untuk memperbaiki pola tidur dan mencari dukungan profesional jika diperlukan.",
-        ringkasan: "Kondisi mental menunjukkan tingkat stres yang cukup tinggi dengan beberapa area yang perlu perhatian.",
-        saran: "Cobalah teknik pernapasan dalam, olahraga ringan 30 menit sehari, dan atur jadwal tidur yang konsisten.",
-        motivasi: "Ingatlah bahwa setiap langkah kecil menuju kesehatan mental adalah pencapaian yang berharga. Kamu tidak sendirian dalam perjalanan ini."
-      };
+      throw error;
     }
   };
 
@@ -163,10 +148,10 @@ const AnalisisPage = () => {
       saveAnalysisResult(result);
       
       // Redirect ke dashboard
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (error) {
-      console.error('Error during analysis:', error);
-      alert('Terjadi kesalahan saat menganalisis. Silakan coba lagi.');
+      console.error("Error during analysis:", error);
+      alert("Terjadi kesalahan saat menganalisis. Silakan coba lagi.");
     } finally {
       setIsLoading(false);
     }
@@ -424,20 +409,14 @@ const AnalisisPage = () => {
                 <motion.div variants={itemVariants} className="pt-6">
                   <Button
                     type="submit"
-                    disabled={isLoading}
+                    disabled={false}
                     className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50"
                   >
-                    {isLoading ? (
-                      <>
-                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                        Menganalisis...
-                      </>
-                    ) : (
                       <>
                         <Brain className="w-5 h-5 mr-2" />
                         Analisis Sekarang
                       </>
-                    )}
+                    )
                   </Button>
                 </motion.div>
               </form>
