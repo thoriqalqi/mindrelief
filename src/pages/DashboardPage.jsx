@@ -7,7 +7,7 @@ import {
 } from 'recharts';
 import { 
   Brain, TrendingUp, Heart, AlertCircle, CheckCircle, 
-  ArrowLeft, Download, Share2, Target, Lightbulb, MessageHeart
+  ArrowLeft, Download, Share2, Target, Lightbulb, MessageSquareText
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
