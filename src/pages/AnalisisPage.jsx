@@ -94,16 +94,36 @@ const AnalisisPage = () => {
       const result = await response.json();
       const text = result.candidates[0].content.parts[0].text;
       
-      // Extract JSON from response
-      const jsonMatch = text.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        return JSON.parse(jsonMatch[0]);
+      // Attempt to extract JSON from response, handling cases where Gemini might include markdown or extra text
+      let jsonString = text;
+      const jsonMatch = text.match(/```json\n([\s\S]*?)\n```/);
+      if (jsonMatch && jsonMatch[1]) {
+        jsonString = jsonMatch[1];
       } else {
-        throw new Error('Invalid response format');
+        // Fallback if markdown json is not found, try to find plain JSON
+        const plainJsonMatch = text.match(/\{[\s\S]*\}/);
+        if (plainJsonMatch) {
+          jsonString = plainJsonMatch[0];
+        }
+      }
+
+      try {
+        const parsedResult = JSON.parse(jsonString);
+        // Validate parsed result structure
+        if (parsedResult.tingkatStres === undefined || parsedResult.emosiUtama === undefined ||
+            parsedResult.rekomendasi === undefined || parsedResult.ringkasan === undefined ||
+            parsedResult.saran === undefined || parsedResult.motivasi === undefined) {
+          throw new Error("Incomplete JSON structure from Gemini");
+        }
+        return parsedResult;
+      } catch (parseError) {
+        console.error("Error parsing JSON from Gemini response:", parseError);
+        console.error("Raw Gemini response text:", text);
+        throw new Error("Failed to parse or validate JSON from Gemini response");
       }
     } catch (error) {
-      console.error('Error calling Gemini API:', error);
-      // Fallback response
+      console.error("Error calling Gemini API or processing response:", error);
+      // Fallback response for any error during API call or processing
       return {
         tingkatStres: 65,
         emosiUtama: {

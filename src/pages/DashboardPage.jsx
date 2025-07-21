@@ -36,9 +36,30 @@ const DashboardPage = () => {
   }, [analysisData, analysisResult, navigate]);
 
   if (!analysisData || !analysisResult || !analysisResult.tingkatStres || !analysisResult.emosiUtama) {
-    // Redirect to analysis page if essential data is missing
-    navigate("/analisis");
-    return null;
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 pt-20 pb-16 flex items-center justify-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-md mx-auto p-8 bg-white dark:bg-gray-800 rounded-lg shadow-xl"
+        >
+          <AlertCircle className="w-16 h-16 text-yellow-500 mx-auto mb-6" />
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Data Analisis Tidak Ditemukan
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+            Mohon isi formulir analisis mental terlebih dahulu untuk melihat dashboard Anda.
+          </p>
+          <Button
+            onClick={() => navigate("/analisis")}
+            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 px-8 text-lg rounded-xl shadow-lg"
+          >
+            Isi Formulir Analisis
+          </Button>
+        </motion.div>
+      </div>
+    );
   }
 
   // Data untuk grafik tingkat stres (menggunakan data dari AI)
