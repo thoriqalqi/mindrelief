@@ -35,7 +35,9 @@ const DashboardPage = () => {
     }
   }, [analysisData, analysisResult, navigate]);
 
-  if (!analysisData || !analysisResult) {
+  if (!analysisData || !analysisResult || !analysisResult.tingkatStres || !analysisResult.emosiUtama) {
+    // Redirect to analysis page if essential data is missing
+    navigate("/analisis");
     return null;
   }
 
