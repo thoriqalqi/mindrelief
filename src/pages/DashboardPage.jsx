@@ -197,16 +197,7 @@ const DashboardPage = () => {
               <span>Kembali ke Analisis</span>
             </Button>
             
-            <div className="flex items-center space-x-3">
-              <Button variant="outline" size="sm">
-                <Download className="w-4 h-4 mr-2" />
-                Unduh Laporan
-              </Button>
-              <Button variant="outline" size="sm">
-                <Share2 className="w-4 h-4 mr-2" />
-                Bagikan
-              </Button>
-            </div>
+            
           </div>
 
           <div className="text-center">

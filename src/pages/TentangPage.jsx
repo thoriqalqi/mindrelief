@@ -26,45 +26,7 @@ const TentangPage = () => {
     }
   ];
 
-  const team = [
-    {
-      name: "A thoriq Alqi Ighafur",
-      role: "Developer",
-      description: "Psikiater dengan 15+ tahun pengalaman dalam terapi kognitif dan kesehatan mental digital.",
-      image: "/api/placeholder/300/300"
-    },
-    {
-      name: "Kilala Mahadewi",
-      role: "AI Technology Lead",
-      description: "Ahli AI dan machine learning yang berfokus pada pengembangan teknologi empati buatan.",
-      image: "/api/placeholder/300/300"
-    },
-    {
-      name: "Naimatul husna",
-      role: "Community Manager",
-      description: "Psikolog klinis yang memimpin pengembangan program komunitas dan dukungan peer.",
-      image: "/api/placeholder/300/300"
-    },
-    {
-      name: "Fahri",
-      role: "Product Designer",
-      description: "UX designer yang mengkhususkan diri dalam desain aplikasi kesehatan mental yang accessible.",
-      image: "/api/placeholder/300/300"
-    },
-    {
-      name: "Dewi Rahmawati",
-      role: "Comunity Manager",
-      description: "Psikolog klinis yang memimpin pengembangan program komunitas dan dukungan peer.",
-      image: "/api/placeholder/300/300"
-    },
-     {
-      name: "Yusuf Faridz Maulana",
-      role: "Product Designer",
-      description: "UX designer yang mengkhususkan diri dalam desain aplikasi kesehatan mental yang accessible.",
-      image: "/api/placeholder/300/300"
-    }
-    
-  ];
+
 
   const stats = [
     { number: "10,000+", label: "Pengguna Aktif" },
@@ -226,48 +188,7 @@ const TentangPage = () => {
           </div>
         </motion.div>
 
-        {/* Team Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-20"
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Tim Ahli Kami
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Profesional berpengalaman yang berdedikasi untuk kesehatan mental Anda
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden"
-              >
-                <div className="h-48 bg-gradient-to-r from-blue-400 to-purple-500"></div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-blue-600 dark:text-blue-400 font-medium mb-3">
-                    {member.role}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    {member.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+       
 
        
 
