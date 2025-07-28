@@ -21,7 +21,7 @@ const CurhatPage = () => {
     setHasSubmitted(true);
 
     try {
-      const res = await fetch("https://ngorzzc21.app.n8n.cloud/webhook/curhat-ai", {
+      const res = await fetch("https://kiieee.app.n8n.cloud/webhook/curhat-ai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
